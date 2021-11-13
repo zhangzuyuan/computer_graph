@@ -1,0 +1,36 @@
+
+    {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Compile", // 任务名称，与launch.json的preLaunchTask相对应
+                "command": "clong++",
+                "args": [ //编译时的参数
+                    "-g",
+                    "${file}",
+                    "-o",  
+                    "${workspaceRoot}/output_exe_files/${fileBasenameNoExtension}.exe",  // 集中存放exe
+
+
+                    "-I",  "D:MinGW/MinGW/include",  // 此处指定库的include目录，默认没有
+                    "-L",  "D:/tools/OpenGL/lib",        // 注意，此行指定库的lib目录，默认没有
+                    
+                    "-l",  "glut32",                     // 使用glut
+                    "-l",  "glu32",
+                    "-l",  "opengl32",
+                ],
+                "type": "shell",
+                "group": {
+                    "kind": "build",
+                    "isDefault": true //表示快捷键Ctrl+Shift+B可以运行该任务
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always", // 执行任务时是否跳转到终端面板
+                    "focus": false,
+                    "panel": "shared" // 不同的文件的编译信息共享一个终端面板
+                },
+                "problemMatcher": []
+            }
+        ]
+    }
